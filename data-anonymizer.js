@@ -17,9 +17,10 @@
 }(this, function () {
   'use strict';
 
-  var seedrandom;
+  var seedrandom, uuidv4;
   if (typeof exports === 'object') {
     seedrandom = require('seedrandom');
+    uuidv4 = require('uuid/v4');
   }
 
   var DataAnonymizer = function(args) {
@@ -41,7 +42,8 @@
         self.seed = args.seed;
       }
       else {
-       self.seed = (new Date()).getTime();
+        //No seed so use UUID - Datetime not reliable if creating multiple instances at same time
+       self.seed = uuidv4();
       }
 
       self.charClasses = [

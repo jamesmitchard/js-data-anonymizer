@@ -90,5 +90,16 @@ describe('anonymizer logic', function() {
     var output2 = anonymizer2.anonymize(input);
     output2.should.equal(output);
   });
+
+  it('should return different output when not using a seed', function() {
+    var input = 'some string';
+    var anonymizer1 = new Anonymizer();
+    var anonymizer2 = new Anonymizer();
+    var output = anonymizer1.anonymize(input);
+    var output2 = anonymizer2.anonymize(input);
+    console.log(output)
+    console.log(output2)
+    output2.should.not.equal(output);
+  });
 });
 
